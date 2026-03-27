@@ -112,7 +112,7 @@ function About() {
       <section className="px-6 md:px-12 py-16 border-t border-[#1e1e2e]">
         <div className="border border-[#2a2a3a] rounded p-8 md:p-12 relative overflow-hidden" style={{ background: "#0d0d18" }}>
           <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-purple-600" />
-          <p className="text-[#444] uppercase tracking-[0.3em] text-[10px] mb-3">// based in Belfast</p>
+          <p className="text-[#444] uppercase tracking-[0.3em] text-[10px] mb-3">// based in Wolverhampton</p>
           <h2
             className="text-white mb-4"
             style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(24px, 5vw, 32px)", letterSpacing: "0.04em" }}
@@ -163,7 +163,7 @@ function About() {
         <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "18px", letterSpacing: "0.08em", color: "#333" }}>
           JTW<span style={{ color: "#3d2580" }}>.</span>
         </div>
-        <div className="text-[#2a2a3a] text-[10px] tracking-[0.1em]">© 2025 JTW Solutions · Belfast</div>
+        <div className="text-[#2a2a3a] text-[10px] tracking-[0.1em]">© 2026 JTW Solutions · Wolverhampton</div>
       </footer>
     </div>
   )
