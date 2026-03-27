@@ -50,9 +50,9 @@ function Home() {
     <div style={{ fontFamily: "'Space Mono', monospace" }}>
 
       {/* Hero */}
-      <section className="relative px-12 pt-28 pb-24 overflow-hidden">
+      <section className="relative px-6 md:px-12 pt-20 md:pt-28 pb-16 md:pb-24 overflow-hidden">
         <div
-          className="pointer-events-none absolute -top-20 -right-24 w-[500px] h-[500px] rounded-full"
+          className="pointer-events-none absolute -top-20 -right-24 w-[400px] h-[400px] rounded-full"
           style={{ background: "radial-gradient(circle, rgba(99,40,220,0.14) 0%, transparent 65%)" }}
         />
         <p className="flex items-center gap-3 text-purple-500 uppercase tracking-[0.25em] text-[11px] mb-6">
@@ -61,7 +61,11 @@ function Home() {
         </p>
         <h1
           className="text-white leading-none mb-6 max-w-2xl"
-          style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(52px, 8vw, 88px)", letterSpacing: "0.02em" }}
+          style={{
+            fontFamily: "'Bebas Neue', sans-serif",
+            fontSize: "clamp(48px, 12vw, 88px)",
+            letterSpacing: "0.02em",
+          }}
         >
           Tech that<br />
           <span className="text-purple-600">actually</span><br />
@@ -71,25 +75,42 @@ function Home() {
           Phone repairs, PC troubleshooting, and custom websites built for real businesses.
           Fast, local, no nonsense.
         </p>
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Link to="/contact">
             <button
-              className="text-white border-none cursor-pointer rounded-sm transition-all hover:-translate-y-px"
-              style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", background: "#6b3fcf", padding: "14px 32px" }}
+              className="w-full sm:w-auto text-white border-none cursor-pointer rounded-sm transition-all hover:-translate-y-px"
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: "11px",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                background: "#6b3fcf",
+                padding: "14px 32px",
+              }}
             >
               Book a repair
             </button>
           </Link>
           <Link to="/portfolio">
             <button
-              className="cursor-pointer rounded-sm transition-all hover:-translate-y-px"
-              style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", background: "transparent", color: "#666", border: "0.5px solid #2a2a3a", padding: "14px 32px" }}
+              className="w-full sm:w-auto cursor-pointer rounded-sm transition-all hover:-translate-y-px"
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: "11px",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                background: "transparent",
+                color: "#666",
+                border: "0.5px solid #2a2a3a",
+                padding: "14px 32px",
+              }}
             >
               View our work
             </button>
           </Link>
         </div>
-        <div className="flex gap-12 mt-16 pt-10 border-t border-[#1e1e2e]">
+
+        <div className="flex flex-wrap gap-8 md:gap-12 mt-14 pt-10 border-t border-[#1e1e2e]">
           {[["500+", "Devices repaired"], ["24hr", "Avg turnaround"], ["100%", "Local & independent"]].map(([num, label]) => (
             <div key={label}>
               <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "36px", letterSpacing: "0.04em" }}>{num}</div>
@@ -100,24 +121,33 @@ function Home() {
       </section>
 
       {/* Services */}
-      <section className="px-12 py-20 border-t border-[#1e1e2e]">
+      <section className="px-6 md:px-12 py-16 md:py-20 border-t border-[#1e1e2e]">
         <p className="text-[#444] uppercase tracking-[0.3em] text-[10px] mb-2">// what we do</p>
-        <h2 className="text-white mb-12" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "42px", letterSpacing: "0.04em" }}>
+        <h2
+          className="text-white mb-10"
+          style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "42px", letterSpacing: "0.04em" }}
+        >
           Our Services
         </h2>
-        <div className="grid grid-cols-3 gap-px bg-[#1e1e2e] border border-[#1e1e2e] rounded overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1e1e2e] border border-[#1e1e2e] rounded overflow-hidden">
           {services.map((s) => (
-            <div key={s.name} className="bg-[#0d0d18] p-8 hover:bg-[#111122] transition-colors">
+            <div key={s.name} className="bg-[#0d0d18] p-6 md:p-8 hover:bg-[#111122] transition-colors">
               <div className="w-10 h-10 border border-[#2a2a3a] rounded flex items-center justify-center mb-5">
                 {s.icon}
               </div>
-              <div className="text-white mb-3" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "22px", letterSpacing: "0.04em" }}>
+              <div
+                className="text-white mb-3"
+                style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "22px", letterSpacing: "0.04em" }}
+              >
                 {s.name}
               </div>
               <p className="text-[#555] text-[12px] leading-relaxed mb-6">{s.desc}</p>
               <div className="flex flex-wrap gap-2">
                 {s.tags.map((t) => (
-                  <span key={t} className="text-[#444] uppercase tracking-[0.12em] text-[10px] border border-[#2a2a3a] px-2 py-1 rounded-sm">
+                  <span
+                    key={t}
+                    className="text-[#444] uppercase tracking-[0.12em] text-[10px] border border-[#2a2a3a] px-2 py-1 rounded-sm"
+                  >
                     {t}
                   </span>
                 ))}
@@ -128,10 +158,13 @@ function Home() {
       </section>
 
       {/* Why us */}
-      <section className="px-12 py-20 border-t border-[#1e1e2e] grid grid-cols-2 gap-16 items-center">
+      <section className="px-6 md:px-12 py-16 md:py-20 border-t border-[#1e1e2e] grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
         <div>
           <p className="text-[#444] uppercase tracking-[0.3em] text-[10px] mb-2">// why jtw</p>
-          <h2 className="text-white" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "42px", letterSpacing: "0.04em", lineHeight: 1 }}>
+          <h2
+            className="text-white"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 42px)", letterSpacing: "0.04em", lineHeight: 1 }}
+          >
             Local expertise,<br />no corners cut.
           </h2>
         </div>
@@ -149,18 +182,28 @@ function Home() {
       </section>
 
       {/* CTA banner */}
-      <div className="mx-12 mb-20 border border-[#2a2a3a] rounded p-12 flex items-center justify-between gap-8 relative overflow-hidden">
+      <div className="mx-6 md:mx-12 mb-16 md:mb-20 border border-[#2a2a3a] rounded p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-purple-600" />
         <div>
-          <div className="text-white" style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "32px", letterSpacing: "0.04em" }}>
+          <div
+            className="text-white"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(24px, 5vw, 32px)", letterSpacing: "0.04em" }}
+          >
             Ready to get sorted?
           </div>
           <div className="text-[#555] text-[12px] mt-1">Drop us a message — we'll get back to you fast.</div>
         </div>
-        <Link to="/contact">
+        <Link to="/contact" className="w-full md:w-auto">
           <button
-            className="text-white border-none cursor-pointer rounded-sm shrink-0 hover:bg-purple-500 transition-colors"
-            style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", background: "#6b3fcf", padding: "14px 32px" }}
+            className="w-full md:w-auto text-white border-none cursor-pointer rounded-sm shrink-0 hover:bg-purple-500 transition-colors"
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "11px",
+              letterSpacing: "0.15em",
+              textTransform: "uppercase",
+              background: "#6b3fcf",
+              padding: "14px 32px",
+            }}
           >
             Contact us
           </button>
@@ -168,7 +211,7 @@ function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="px-12 py-8 border-t border-[#1e1e2e] flex justify-between items-center">
+      <footer className="px-6 md:px-12 py-8 border-t border-[#1e1e2e] flex flex-col sm:flex-row justify-between items-center gap-3">
         <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "18px", letterSpacing: "0.08em", color: "#333" }}>
           JTW<span style={{ color: "#3d2580" }}>.</span>
         </div>
