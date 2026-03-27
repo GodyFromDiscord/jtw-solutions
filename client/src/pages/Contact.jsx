@@ -68,8 +68,8 @@ function Contact() {
             {[
             {
                 label: "Phone",
-                value: "+44 7XXX XXXXXX",
-                href: "tel:+447XXXXXXXXX",
+                value: "+44 7913 415182",
+                href: "tel:+447913415182",
             },
             {
                 label: "Email",
@@ -79,7 +79,7 @@ function Contact() {
             {
                 label: "WhatsApp",
                 value: "Message me on WhatsApp",
-                href: "https://wa.me/447XXXXXXXXX",
+                href: "https://wa.me/447913415182",
             },
             ].map(({ label, value, href }) => (
             <a
