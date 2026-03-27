@@ -172,7 +172,7 @@ function Home() {
         <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "18px", letterSpacing: "0.08em", color: "#333" }}>
           JTW<span style={{ color: "#3d2580" }}>.</span>
         </div>
-        <div className="text-[#2a2a3a] text-[10px] tracking-[0.1em]">© 2025 JTW Solutions · Belfast</div>
+        <div className="text-[#2a2a3a] text-[10px] tracking-[0.1em]">© 2026 JTW Solutions · Wolverhampton</div>
       </footer>
 
     </div>
