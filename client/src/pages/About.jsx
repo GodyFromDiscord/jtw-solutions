@@ -49,8 +49,8 @@ function About() {
 
         <div className="flex flex-col gap-4">
           {[
-            { num: "500+", label: "Devices repaired" },
-            { num: "24hr", label: "Avg turnaround" },
+            { num: "2-3", label: "Day turnaround" },
+            { num: "Free", label: "Diagnosis & quotes" },
             { num: "100%", label: "Local & independent" },
           ].map(({ num, label }) => (
             <div

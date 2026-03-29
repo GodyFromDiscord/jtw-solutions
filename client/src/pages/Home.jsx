@@ -39,10 +39,10 @@ const services = [
 ]
 
 const whyItems = [
-  { title: "Same-day turnaround", body: "Most phone repairs are done within hours, not days. We respect your time." },
-  { title: "Honest pricing", body: "Free diagnosis, upfront quotes. You'll always know what you're paying before we start." },
-  { title: "Quality guaranteed", body: "All repairs come with a warranty. If something isn't right, we'll make it right." },
-  { title: "Built in Wolverhampton", body: "A local, independent business. No call centres, no middlemen — just us." },
+  { title: "Fast turnaround", body: "Most repairs are completed within 2-3 business days. I'll always keep you updated on progress." },
+  { title: "Honest pricing", body: "Free diagnosis, upfront quotes. You'll always know what you're paying before any work starts." },
+  { title: "Quality guaranteed", body: "All repairs come with a warranty. If something isn't right, I'll make it right." },
+  { title: "Based in Wolverhampton", body: "A local, independent business. No call centres, no middlemen — just me." },
 ]
 
 function Home() {
@@ -75,6 +75,7 @@ function Home() {
           Phone repairs, PC troubleshooting, and custom websites built for real businesses.
           Fast, local, no nonsense.
         </p>
+        <div className="text-[#555] text-[12px] mt-1">Drop me a message — I'll get back to you fast.</div>
         <div className="flex flex-col sm:flex-row gap-3">
           <Link to="/contact">
             <button
@@ -111,7 +112,11 @@ function Home() {
         </div>
 
         <div className="flex flex-wrap gap-8 md:gap-12 mt-14 pt-10 border-t border-[#1e1e2e]">
-          {[["500+", "Devices repaired"], ["24hr", "Avg turnaround"], ["100%", "Local & independent"]].map(([num, label]) => (
+          {[
+            ["2-3", "Day turnaround"],
+            ["100%", "Local & independent"],
+            ["Free", "Diagnosis & quotes"],
+          ].map(([num, label]) => (
             <div key={label}>
               <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "36px", letterSpacing: "0.04em" }}>{num}</div>
               <div className="text-[#444] uppercase tracking-[0.2em] text-[10px] mt-1">{label}</div>

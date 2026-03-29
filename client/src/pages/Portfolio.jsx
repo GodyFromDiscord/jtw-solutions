@@ -1,24 +1,13 @@
+import pdtMdtImg from "../assets/pdt-mdt.png"
+
 const projects = [
   {
-    title: "Local Trades Website",
-    category: "Demo Project",
-    desc: "A clean, modern website designed for a local plumbing business. Built to generate enquiries and load fast on any device.",
-    tags: ["Mobile-friendly", "Contact form", "Fast loading"],
-    color: "#111122",
-  },
-  {
-    title: "Gym & Fitness Website",
-    category: "Demo Project",
-    desc: "A bold, visual site for a fitness business. Clear layout with class info, membership details, and a strong look that converts visitors.",
-    tags: ["Class listings", "Membership info", "Strong visuals"],
-    color: "#111122",
-  },
-  {
-    title: "Small Business Site",
-    category: "Demo Project",
-    desc: "A focused lead-generation site for a small local business. Simple navigation, clear call-to-action, and SEO-friendly structure.",
-    tags: ["Lead generation", "SEO-friendly", "Clear CTA"],
-    color: "#111122",
+    title: "Police Department MDT",
+    category: "Web Application",
+    desc: "A full law enforcement management system. Features warrant tracking with risk classification, live officer dispatch, incident reporting, DOJ court document generation, roster management, hot gun serial matching, an internal announcements board, and officer performance leaderboards.",
+    tags: ["React", "Tailwind", "Express", "REST API", "Real-time data"],
+    img: pdtMdtImg,
+    link: "https://mdt.gov-rp.com/",
   },
 ]
 
@@ -28,25 +17,34 @@ function PortfolioCard({ project, index }) {
       className="border border-[#1e1e2e] rounded overflow-hidden hover:border-[#2a2a3a] transition-colors"
       style={{ background: "#0d0d18" }}
     >
-      {/* Placeholder image area */}
+      {/* Image area */}
       <div
-        className="w-full flex items-center justify-center border-b border-[#1e1e2e] relative overflow-hidden"
-        style={{ height: "200px", background: "#080810" }}
+        className="w-full border-b border-[#1e1e2e] relative overflow-hidden"
+        style={{ height: "220px", background: "#080810" }}
       >
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px)" }}
-        />
-        <div
-          className="text-center"
-          style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "64px", letterSpacing: "0.08em", color: "#1e1e2e", lineHeight: 1 }}
-        >
-          0{index + 1}
-        </div>
+        {project.img ? (
+          <img
+            src={project.img}
+            alt={project.title}
+            className="w-full h-full object-cover object-top opacity-90 hover:opacity-100 transition-opacity"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{ background: "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.012) 2px, rgba(255,255,255,0.012) 4px)" }}
+            />
+            <div
+              style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "64px", letterSpacing: "0.08em", color: "#1e1e2e", lineHeight: 1 }}
+            >
+              0{index + 1}
+            </div>
+          </div>
+        )}
         <div className="absolute bottom-3 right-3">
           <span
             className="text-purple-400 uppercase tracking-[0.12em] text-[10px] border border-purple-900 px-2 py-1 rounded-sm"
-            style={{ background: "rgba(107,63,207,0.08)" }}
+            style={{ background: "rgba(8,8,16,0.85)" }}
           >
             {project.category}
           </span>
@@ -54,11 +52,24 @@ function PortfolioCard({ project, index }) {
       </div>
 
       <div className="p-6">
-        <div
-          className="text-white mb-2"
-          style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "22px", letterSpacing: "0.04em" }}
-        >
-          {project.title}
+        <div className="flex items-start justify-between gap-4 mb-2">
+          <div
+            className="text-white"
+            style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "22px", letterSpacing: "0.04em" }}
+          >
+            {project.title}
+          </div>
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 text-purple-400 uppercase tracking-[0.12em] text-[10px] border border-purple-900 px-3 py-1 rounded-sm hover:bg-purple-900 transition-colors"
+              style={{ textDecoration: "none" }}
+            >
+              View live
+            </a>
+          )}
         </div>
         <p className="text-[#555] text-[12px] leading-relaxed mb-5">{project.desc}</p>
         <div className="flex flex-wrap gap-2">
@@ -98,21 +109,21 @@ function Portfolio() {
           <span className="text-purple-600">built.</span>
         </h1>
         <p className="text-[#777] text-[13px] leading-relaxed max-w-xl">
-          Here are some examples of websites and projects I've worked on.
-          Screenshots coming soon — reach out to see live demos.
+          Real applications built from scratch. Each project is fully functional,
+          custom designed, and built with modern web technologies.
         </p>
       </section>
 
-      {/* Projects grid */}
+      {/* Projects grid — single col until you have 2-3 projects */}
       <section className="px-6 md:px-12 py-16 border-t border-[#1e1e2e]">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl">
           {projects.map((p, i) => (
             <PortfolioCard key={p.title} project={p} index={i} />
           ))}
         </div>
       </section>
 
-      {/* Screenshot note */}
+      {/* More coming note */}
       <section className="px-6 md:px-12 pb-16">
         <div
           className="border border-[#1e1e2e] rounded p-6 md:p-8 relative overflow-hidden"
@@ -121,8 +132,8 @@ function Portfolio() {
           <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-purple-600" />
           <p className="text-[#444] uppercase tracking-[0.3em] text-[10px] mb-2">// more coming soon</p>
           <p className="text-[#555] text-[12px] leading-relaxed max-w-2xl">
-            I'm currently building out more portfolio pieces. If you'd like to see a live demo or
-            discuss what I can build for your business, just get in touch — I'm happy to walk you through examples.
+            More projects being added shortly. Want to see a live demo or discuss
+            what I can build for your business? Just get in touch.
           </p>
         </div>
       </section>

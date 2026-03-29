@@ -3,13 +3,32 @@ import { useState } from "react"
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" })
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState("")
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Wire up to your backend or EmailJS later
-    setSent(true)
+    setSending(true)
+    setError("")
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      })
+
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || "Something went wrong.")
+
+      setSent(true)
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setSending(false)
+    }
   }
 
   const inputStyle = {
@@ -66,44 +85,27 @@ function Contact() {
           <div>
             <p className="text-[#444] uppercase tracking-[0.3em] text-[10px] mb-6">// reach me directly</p>
             {[
-            {
-                label: "Phone",
-                value: "+44 7913 415182",
-                href: "tel:+447913415182",
-            },
-            {
-                label: "Email",
-                value: "jack@jtwsolutions.co.uk",
-                href: "mailto:jack@jtwsolutions.co.uk",
-            },
-            {
-                label: "WhatsApp",
-                value: "Message me on WhatsApp",
-                href: "https://wa.me/447913415182",
-            },
+              { label: "Phone", value: "+44 7913 415182", href: "tel:+447913415182" },
+              { label: "Email", value: "jack@jtwsolutions.co.uk", href: "mailto:jack@jtwsolutions.co.uk" },
+              { label: "WhatsApp", value: "Message me on WhatsApp", href: "https://wa.me/447913415182" },
             ].map(({ label, value, href }) => (
-            <a
+              <a
                 key={label}
                 href={href}
                 className="flex items-start gap-5 p-5 border border-[#1e1e2e] rounded mb-3 hover:border-[#2a2a3a] transition-colors no-underline"
-                style={{ background: "#0d0d18" }}
-            >
+                style={{ background: "#0d0d18", textDecoration: "none" }}
+              >
                 <div className="w-1.5 h-1.5 rounded-full bg-purple-600 mt-1.5 shrink-0" />
                 <div>
-                <div className="text-[#444] uppercase tracking-[0.15em] text-[10px] mb-1">{label}</div>
-                <div className="text-[#aaa] text-[12px]">{value}</div>
+                  <div className="text-[#444] uppercase tracking-[0.15em] text-[10px] mb-1">{label}</div>
+                  <div className="text-[#aaa] text-[12px]">{value}</div>
                 </div>
-            </a>
+              </a>
             ))}
           </div>
 
-          {/* Trust badges */}
           <div className="grid grid-cols-1 gap-3 mt-2">
-            {[
-              "Fast response times",
-              "Free quotes available",
-              "No fix, no fee on repairs",
-            ].map((t) => (
+            {["Fast response times", "Free quotes available", "No fix, no fee on repairs"].map((t) => (
               <div key={t} className="flex items-center gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-purple-600 shrink-0" />
                 <span className="text-[#444] text-[11px] uppercase tracking-[0.15em]">{t}</span>
@@ -175,19 +177,26 @@ function Contact() {
                   onBlur={(e) => (e.target.style.borderColor = "#2a2a3a")}
                 />
               </div>
+
+              {error && (
+                <p className="text-red-500 text-[11px] tracking-wide">{error}</p>
+              )}
+
               <button
                 type="submit"
-                className="text-white border-none cursor-pointer rounded-sm hover:bg-purple-500 transition-colors mt-2"
+                disabled={sending}
+                className="text-white border-none cursor-pointer rounded-sm transition-colors mt-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "11px",
                   letterSpacing: "0.15em",
                   textTransform: "uppercase",
-                  background: "#6b3fcf",
+                  background: sending ? "#3d2580" : "#6b3fcf",
                   padding: "14px 32px",
+                  width: "100%",
                 }}
               >
-                Send message
+                {sending ? "Sending..." : "Send message"}
               </button>
             </form>
           )}
