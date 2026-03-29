@@ -1,4 +1,5 @@
 import pdtMdtImg from "../assets/pdt-mdt.png"
+import upbeatImg from "../assets/upbeat-radio.png"
 
 const projects = [
   {
@@ -7,7 +8,15 @@ const projects = [
     desc: "A full law enforcement management system. Features warrant tracking with risk classification, live officer dispatch, incident reporting, DOJ court document generation, roster management, hot gun serial matching, an internal announcements board, and officer performance leaderboards.",
     tags: ["React", "Tailwind", "Express", "REST API", "Real-time data"],
     img: pdtMdtImg,
-    link: "https://mdt.gov-rp.com/",
+    link: null,
+  },
+  {
+    title: "Upbeat Radio",
+    category: "Web Application",
+    desc: "A full online radio platform with a live stream player, now playing & recently played track display, show schedules, community features, content articles, user registration, and an embeddable player for third-party sites.",
+    tags: ["PHP", "MySQL", "JavaScript", "Live streaming", "CMS"],
+    img: upbeatImg,
+    link: "https://upbeatradio.net",
   },
 ]
 
