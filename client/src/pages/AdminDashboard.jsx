@@ -221,7 +221,18 @@ function InvoiceView({ order, onClose }) {
 
         <div style={{ borderTop: "1px solid #eee", paddingTop: "16px", color: "#aaa", fontSize: "11px" }}>
           <div>Thank you for choosing JTW Solutions.</div>
-          <div style={{ marginTop: "4px" }}>Payment due within 14 days of invoice date.</div>
+          <div style={{ marginTop: "4px" }}>Payment due within 14 days of invoice date if not already paid.</div>
+
+          {order.service === "Phone Repair" && (
+            <div style={{ marginTop: "16px", padding: "12px", border: "1px solid #ddd", borderRadius: "2px", background: "#f9f9f9" }}>
+              <div style={{ fontWeight: "700", fontSize: "11px", marginBottom: "6px", color: "#333", letterSpacing: "0.05em" }}>
+                Battery Replacement Disclaimer
+              </div>
+              <div style={{ color: "#555", lineHeight: "1.6", fontSize: "10.5px" }}>
+                Due to manufacturer software restrictions, some devices may display a "non-genuine battery" warning after replacement. This does not affect the performance, safety, or functionality of the device. However, certain battery health features may be unavailable. By accepting this service, the customer acknowledges and agrees to these conditions.
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
